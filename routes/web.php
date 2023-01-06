@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('admin')->group(function() {
+    Route::get('/', function () {
+        return view('admin.home');
+    });
+    Route::get('/kelas', function () {
+        return view('admin.kelas');
+    });
+    Route::get('/users', function () {
+        return view('admin.user');
+    });
+});
