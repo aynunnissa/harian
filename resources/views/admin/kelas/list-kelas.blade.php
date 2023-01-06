@@ -1,7 +1,13 @@
 @extends('admin.layouts.layout')
 
 @section('content')
-<h3 class="fw-bold">Daftar Kelas</h3>
+<div class="d-flex align-items-center justify-content-between align-items-center">
+  <div>
+      <h3 class="fw-bold">Kelas</h3>
+      <p class="text-secondary mb-0">10 entries found</p>
+  </div>
+  <a href="kelas/create" class="btn btn-primary" role="button"><i class="bi bi-plus-lg"></i> Create new entry</a>
+</div>
 <div class="mt-4 p-2 bg-white">
     <table class="table">
         <thead>
