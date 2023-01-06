@@ -25,6 +25,9 @@ Route::prefix('admin')->group(function() {
         return view('admin.kelas');
     });
     Route::get('/users', function () {
-        return view('admin.user');
+        return view('admin.users.user');
+    });
+    Route::get('/users/create', function () {
+        return view('admin.users.create-user');
     });
 });
