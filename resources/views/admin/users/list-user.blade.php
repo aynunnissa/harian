@@ -1,7 +1,14 @@
 @extends('admin.layouts.layout')
 
 @section('content')
+      @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ $message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
     <div class="d-flex align-items-center justify-content-between align-items-center">
+      
         <div>
             <h3 class="fw-bold">Users</h3>
             <p class="text-secondary mb-0">10 entries found</p>
@@ -26,10 +33,15 @@
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
                   <td>
-                    <div class="hstack gap-4">
-                      <a href="{{ URL::to('/admin/users/' . $user->id . '/edit') }}"><i class="bi bi-pencil-fill text-secondary"></i> </a>
-                      <a href=""><i class="bi bi-trash-fill text-danger"></i></a>
-                    </div>
+                    <form action="{{ URL::to('/admin/users/' . $user->id) }}" method="POST" onsubmit="return confirm('{{ 'Are you sure you want to Delete ' . $user->name . '?'  }}');">
+                      <div class="hstack gap-4">
+                        <a href="{{ URL::to('/admin/users/' . $user->id . '/edit') }}"><i class="bi bi-pencil-fill text-secondary"></i> </a>
+                        @csrf
+                        @method('DELETE')
+                        {{-- <a href=""><i class="bi bi-trash-fill text-danger"></i></a> --}}
+                        <button type="submit" class="border-0 bg-transparent"><i class="bi bi-trash-fill text-danger"></i></button>
+                      </div>
+                    </form>
                   </td>
                 </tr>
                 @endforeach

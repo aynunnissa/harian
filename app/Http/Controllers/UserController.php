@@ -66,9 +66,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.edit', [
-            'user' => $user
-        ]);
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -80,7 +78,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        $user->fill($request->post())->save();
+
+        return redirect()->to('/admin/users')->with('success','User has been updated successfully');
     }
 
     /**
@@ -91,6 +96,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->to('/admin/users')->with('success','User has been deleted successfully');
     }
 }
