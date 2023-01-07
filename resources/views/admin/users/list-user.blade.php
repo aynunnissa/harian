@@ -9,34 +9,30 @@
         <a href="users/create" class="btn btn-primary" role="button"><i class="bi bi-plus-lg"></i> Create new entry</a>
     </div>
     {{-- <div class="mt-4 mb-2"><button class="btn btn-primary btn-sm"><i class="bi bi-download"></i> Export</button></div> --}}
-    <div class="p-2 bg-white">
+    <div class="p-2 mt-4 bg-white">
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">ID</th>
+                <th scope="col">Fullname</th>
+                <th scope="col">Email</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
+              @foreach ($users as $user)
+                <tr>
+                    <th scope="row">{{ $user->id }}</th>
+                  <td>{{ $user->name }}</td>
+                  <td>{{ $user->email }}</td>
+                  <td>
+                    <div class="hstack gap-4">
+                      <a href="{{ URL::to('/admin/users/' . $user->id . '/edit') }}"><i class="bi bi-pencil-fill text-secondary"></i> </a>
+                      <a href=""><i class="bi bi-trash-fill text-danger"></i></a>
+                    </div>
+                  </td>
+                </tr>
+                @endforeach
             </tbody>
           </table>
     </div>

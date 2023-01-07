@@ -9,18 +9,15 @@
       </div>
       <div class="shadow-sm px-4 py-5 mb-5 bg-white rounded">
         <div class="row g-3">
-          @csrf
+            @method('patch')
+            @csrf
           <div class="col-12">
               <label for="inputFullName" class="form-label">Fullname</label>
-              <input type="text" name="name" class="form-control" id="inputFullName" placeholder="John doe" required>
+              <input type="text" value={{ $user->name}} name="name" class="form-control" id="inputFullName" required>
             </div>
           <div class="col-md-6">
             <label for="inputEmail4" class="form-label">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="john.doe@gmail.com" name="email">
-          </div>
-          <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">Password</label>
-            <input type="password" class="form-control" id="inputPassword4" name="password" autocomplete="off">
+            <input type="email" value={{ $user->email}} class="form-control" id="inputEmail4" name="email">
           </div>
         </div>
       </div>

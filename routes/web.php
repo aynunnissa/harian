@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::prefix('admin')->group(function() {
+    Route::resource('users', UserController::class);
+
     Route::get('/', function () {
         return view('admin.home');
     });
@@ -27,11 +31,5 @@ Route::prefix('admin')->group(function() {
     });
     Route::get('/kelas/create', function () {
         return view('admin.kelas.create-kelas');
-    });
-    Route::get('/users', function () {
-        return view('admin.users.list-user');
-    });
-    Route::get('/users/create', function () {
-        return view('admin.users.create-user');
     });
 });
