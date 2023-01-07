@@ -1,12 +1,12 @@
 @extends('admin.layouts.layout')
 
 @section('content')
-      @if ($message = Session::get('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          {{ $message }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      @endif
+    @if ($message = Session::get('success'))
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ $message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    @endif
     <div class="d-flex align-items-center justify-content-between align-items-center">
       
         <div>
@@ -29,7 +29,7 @@
             <tbody>
               @foreach ($users as $user)
                 <tr>
-                    <th scope="row">{{ $user->id }}</th>
+                  <th scope="row">{{ $user->id }}</th>
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
                   <td>

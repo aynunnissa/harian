@@ -22,14 +22,15 @@ Route::get('/', function () {
 
 Route::prefix('admin')->group(function() {
     Route::resource('users', UserController::class);
+    Route::resource('kelas', KelasController::class);
 
-    Route::get('/', function () {
-        return view('admin.home');
-    });
-    Route::get('/kelas', function () {
-        return view('admin.kelas.list-kelas');
-    });
-    Route::get('/kelas/create', function () {
-        return view('admin.kelas.create-kelas');
-    });
+    // Route::get('/', function () {
+    //     return view('admin.home');
+    // });
+    // Route::get('/kelas', function () {
+    //     return view('admin.kelas.list-kelas');
+    // });
+    // Route::get('/kelas/create', function () {
+    //     return view('admin.kelas.create-kelas');
+    // });
 });

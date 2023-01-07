@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -15,8 +14,8 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $user = User::find(1)->classes;
-        echo $user;
+        $kelas = Kelas::all();
+        return view('admin.kelas.list-kelas', [ 'kelas' => $kelas ]);
     }
 
     /**
@@ -26,7 +25,7 @@ class KelasController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.kelas.create-kelas');
     }
 
     /**
@@ -37,7 +36,38 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tema' => 'required',
+            'tipe' => 'required',
+            'judul' => 'required',
+            'deskripsi_singkat' => 'required',
+            'nama_pembicara' => 'required',
+            'deskripsi_singkat_pembicara' => 'required',
+            'poin_materi' => 'required',
+            'rangkaian_materi' => 'required',
+        ]);
+
+        if($request->hasFile('image')){
+            $filename = $request->image->hashName();
+            $request->image->storeAs('banners',$filename,'public');
+        } else {
+            $filename = 'banner.png';
+        }
+
+        $kelas = Kelas::create([
+            'slug' => $request->judul,
+            'tema' => $request->tema,
+            'tipe' => $request->tipe,
+            'judul' => $request->judul,
+            'deskripsi_singkat' => $request->deskripsi_singkat,
+            'nama_pembicara' => $request->nama_pembicara,
+            'deskripsi_singkat_pembicara' => $request->deskripsi_singkat_pembicara,
+            'poin_materi' => $request->poin_materi,
+            'rangkaian_materi' => $request->rangkaian_materi,
+            'image' => $filename,
+        ]);
+
+        return redirect()->to('/admin/kelas');
     }
 
     /**
@@ -48,7 +78,7 @@ class KelasController extends Controller
      */
     public function show(Kelas $kelas)
     {
-        //
+        
     }
 
     /**
@@ -57,9 +87,10 @@ class KelasController extends Controller
      * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kelas $kelas)
+    public function edit($id)
     {
-        //
+        $kelas = Kelas::find($id);
+        return view('admin.kelas.edit', [ 'kelas' => $kelas ]);
     }
 
     /**
@@ -69,9 +100,30 @@ class KelasController extends Controller
      * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kelas $kelas)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'tema' => 'required',
+            'tipe' => 'required',
+            'judul' => 'required',
+            'deskripsi_singkat' => 'required',
+            'nama_pembicara' => 'required',
+            'deskripsi_singkat_pembicara' => 'required',
+            'poin_materi' => 'required',
+            'rangkaian_materi' => 'required',
+        ]);
+        $kelas = Kelas::find($id);
+        $request['slug'] = $request->judul;
+
+        if($request->hasFile('image')){
+            $filename = $request->image->getClientOriginalName();
+            $request->image->storeAs('banners',$filename,'public');
+            $request['image'] = $filename;
+        } 
+
+        $kelas->fill($request->post())->save();
+
+        return redirect()->to('/admin/kelas')->with('success', "Class has been updated successfully");
     }
 
     /**
@@ -80,8 +132,10 @@ class KelasController extends Controller
      * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kelas $kelas)
+    public function destroy($id)
     {
-        //
+        $kelas = Kelas::find($id);
+        $kelas->delete();
+        return redirect()->to('/admin/kelas')->with('success', "Class has been deleted successfully");
     }
 }

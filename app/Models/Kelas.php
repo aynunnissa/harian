@@ -17,7 +17,8 @@ class Kelas extends Model
         'nama_pembicara',
         'deskripsi_singkat_pembicara',
         'poin_materi',
-        'rangkaian_materi'
+        'rangkaian_materi',
+        'image',
     ];
 
     public function users() {
