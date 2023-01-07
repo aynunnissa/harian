@@ -18,4 +18,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/kelas', [KelasController::class, 'index']);
+Route::prefix('admin')->group(function() {
+    Route::get('/', function () {
+        return view('admin.home');
+    });
+    Route::get('/kelas', function () {
+        return view('admin.kelas.list-kelas');
+    });
+    Route::get('/kelas/create', function () {
+        return view('admin.kelas.create-kelas');
+    });
+    Route::get('/users', function () {
+        return view('admin.users.list-user');
+    });
+    Route::get('/users/create', function () {
+        return view('admin.users.create-user');
+    });
+});
