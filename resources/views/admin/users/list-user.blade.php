@@ -23,6 +23,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Fullname</th>
                 <th scope="col">Email</th>
+                <th scope="col">Total Kelas</th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -32,9 +33,11 @@
                   <th scope="row">{{ $user->id }}</th>
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
+                  <td>{{ $user->classes_count }}</td>
                   <td>
                     <form action="{{ URL::to('/admin/users/' . $user->id) }}" method="POST" onsubmit="return confirm('{{ 'Are you sure you want to Delete ' . $user->name . '?'  }}');">
                       <div class="hstack gap-4">
+                        <a class="btn btn-success btn-sm" href="{{ URL::to('/admin/users/' . $user->id) }}" role="button">detail</a>
                         <a href="{{ URL::to('/admin/users/' . $user->id . '/edit') }}"><i class="bi bi-pencil-fill text-secondary"></i> </a>
                         @csrf
                         @method('DELETE')

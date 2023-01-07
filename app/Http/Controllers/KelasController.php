@@ -14,7 +14,7 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::all();
+        $kelas = Kelas::withCount('users')->get();
         return view('admin.kelas.list-kelas', [ 'kelas' => $kelas ]);
     }
 
@@ -76,8 +76,11 @@ class KelasController extends Controller
      * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function show(Kelas $kelas)
-    {
+    public function show($id)
+    { 
+        $kelas = Kelas::find($id);
+        $users = $kelas->users()->get();
+        return view('admin.kelas.view', [ 'kelas' => $kelas, 'users' => $users ]);
         
     }
 

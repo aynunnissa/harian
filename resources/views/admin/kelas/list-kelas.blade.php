@@ -35,11 +35,11 @@
               <td>{{ $ikelas->judul }}</td>
               <td>{{ $ikelas->nama_pembicara }}</td>
               <td>{{ Str::of($ikelas->deskripsi_singkat)->limit(150) }}</td>
-              <td>10</td>
+              <td>{{ $ikelas->users_count }}</td>
               <td>
                 <form action="{{ URL::to('/admin/kelas/' . $ikelas->id) }}" method="POST" onsubmit="return confirm('{{ 'Are you sure you want to Delete kelas ' . $ikelas->judul . '?'  }}');">
                   <div class="hstack gap-4">
-                    <a class="btn btn-success btn-sm" href="#" role="button">detail</a>
+                    <a class="btn btn-success btn-sm" href="{{ '/admin/kelas/'.$ikelas->id }}" role="button">detail</a>
                     <a href="{{ URL::to('/admin/kelas/' . $ikelas->id . '/edit') }}"><i class="bi bi-pencil-fill text-secondary"></i> </a>
                     @csrf
                     @method('DELETE')

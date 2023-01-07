@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::withCount('classes')->get();
         return view('admin.users.list-user', [ 'users' => $users]);
     }
 
@@ -55,7 +55,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $kelas = $user->classes()->get();
+        
+        return view('admin.users.view', [ 'user' => $user, 'kelas' => $kelas ]);
     }
 
     /**
