@@ -37,7 +37,7 @@
                   <td>
                     <form action="{{ URL::to('/admin/users/' . $user->id) }}" method="POST" onsubmit="return confirm('{{ 'Are you sure you want to Delete ' . $user->name . '?'  }}');">
                       <div class="hstack gap-4">
-                        <a class="btn btn-success btn-sm" href="{{ URL::to('/admin/users/' . $user->id) }}" role="button">detail</a>
+                        <a href="{{ URL::to('/admin/users/' . $user->id) }}"><i class="bi bi-card-text text-success"></i></a>
                         <a href="{{ URL::to('/admin/users/' . $user->id . '/edit') }}"><i class="bi bi-pencil-fill text-secondary"></i> </a>
                         @csrf
                         @method('DELETE')

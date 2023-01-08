@@ -56,6 +56,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         $kelas = $user->classes()->get();
+        $user->loadCount('classes');
         
         return view('admin.users.view', [ 'user' => $user, 'kelas' => $kelas ]);
     }

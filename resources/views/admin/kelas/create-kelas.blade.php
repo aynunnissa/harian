@@ -1,37 +1,38 @@
 @extends('admin.layouts.layout')
 
 @section('content')
-    <a href="/admin/kelas"><i class="bi bi-arrow-left"></i> back</a>
-    <form class="row g-3" method="POST" action="/admin/kelas" enctype="multipart/form-data">
+    <a href="/admin/kelas" style="text-decoration: none"><i class="bi bi-arrow-left"></i> back</a>
+    <form method="POST" action="/admin/kelas" enctype="multipart/form-data">
       @csrf
       <div class="mt-4 mb-5 d-flex align-items-center justify-content-between align-items-center">
           <h3 class="fw-bold">Create a Class</h3>
           <button type="submit" class="btn btn-primary w-25">Save</button>
       </div>
-      <div class="shadow-sm p-4 mb-3 bg-white rounded">
-        <h6 class="fw-bold mb-3">Informasi Pembicara</h6>          
+      <div class="shadow-sm p-4 mx-0 mb-3 row g-3 bg-white rounded">
+        <h6 class="fw-bold col-12 mb-0">Informasi Pembicara</h6>          
         <div class="col-md-6">
-          <label for="inputJudul" class="form-label">Nama Pembicara</label>
-          <input type="text" name="nama_pembicara" class="form-control" id="inputJudul">
+          <label for="inputSpeaker" class="form-label">Nama Pembicara</label>
+          <input type="text" name="nama_pembicara" class="form-control" id="inputSpeaker" placeholder="Masukkan nama pemateri kelas" required>
         </div>
         <div class="col-md-6">
           <label for="inputTopik" class="form-label">Deskripsi Pembicara</label>
-          <input type="text" name="deskripsi_singkat_pembicara" class="form-control" id="inputTopik">
+          <textarea name="deskripsi_singkat_pembicara" class="form-control" id="inputTopik" placeholder="Profil singkat pemateri" required></textarea>
         </div>
       </div>
-      <div class="shadow-sm p-4 mb-5 bg-white rounded">
-        <h6 class="fw-bold mb-3">Informasi Kelas</h6>
+      <div class="row g-3 mx-0 shadow-sm p-4 mb-5 mt-3 bg-white rounded">
+        <h6 class="col-12 fw-bold mb-3">Informasi Kelas</h6>
         <div class="col-md-12 mb-2">
-          <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
-              alt="preview image" style="max-height: 250px;">
-      </div>
+          <div style="position: relative; display: inline-block">
+            <input class="bg-success" style="display: inline-block; cursor: pointer; position:absolute; bottom: 5px; right: 5px; width: 50px; height: 75px; z-index: 5; opacity: 0" type="file" name="image" id="image" required>
+            <button class="btn btn-primary" style="cursor: pointer; position: absolute; bottom: 5px; right: 5px; width: 50px; height: 50px"><i class="bi bi-pencil-fill"></i></button>
+            <img id="preview-image-before-upload" src="{{asset('/storage/banners/banner.jpg')}}" alt="preview image" style="max-height: 250px;">
+          </div>
+        </div>
         <div class="col-md-12">
-          <label for="inputJudul" class="form-label">Banner</label>
-          <input type="file" name="image" id="image">
         </div>
         <div class="col-6">
-          <label for="inputTopik" class="form-label">Tema</label>
-          <input type="text" name="tema" class="form-control" id="inputTopik">
+          <label for="inputTopik" class="form-label">Topik</label>
+          <input type="text" name="tema" class="form-control" id="inputTopik" placeholder="ex: sport, dll" required>
         </div>
         <div class="col-6">
           <label for="inputState" class="form-label">Tipe</label>
@@ -42,19 +43,19 @@
         </div>
         <div class="col-12">
           <label for="inputAddress" class="form-label">Judul</label>
-          <input type="text" name="judul" class="form-control" id="inputAddress" placeholder="1234 Main St">
+          <input type="text" name="judul" class="form-control" id="inputAddress" placeholder="Judul kelas" required>
         </div>
         <div class="col-12">
           <label for="inputAddress2" class="form-label">Deskripsi Kelas</label>
-          <input type="text" class="form-control" name="deskripsi_singkat" id="inputAddress2" placeholder="Apartment, studio, or floor">
+          <textarea class="form-control" name="deskripsi_singkat" id="inputAddress2" placeholder="Sedikit lebih detail mengenai kelas" required></textarea>
         </div>
         <div class="col-md-12">
           <label for="inputCity" class="form-label">Poin Materi</label>
-          <input type="text" name="poin_materi" class="form-control" id="inputCity">
+          <input type="text" name="poin_materi" class="form-control" id="inputCity" placeholder="tbc.." required>
         </div>
         <div class="col-12">
           <label for="inputZip" class="form-label">Rangkaian Materi</label>
-          <input type="text" name="rangkaian_materi" class="form-control" id="inputZip">
+          <input type="text" name="rangkaian_materi" class="form-control" id="inputZip" placeholder="tbc.." required>
         </div>          
       </div>
     </form>

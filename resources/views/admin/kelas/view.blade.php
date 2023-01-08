@@ -1,7 +1,8 @@
 @extends('admin.layouts.layout')
 
 @section('content')
-    <h3 class="fw-bold">Data Kelas</h3>
+    <a href="/admin/users" style="text-decoration: none"><i class="bi bi-arrow-left"></i> back</a>
+    <h3 class="fw-bold mt-3">Data Kelas</h3>
     <div class="p-2 bg-white">
         
         <h6 class="fw-bold mb-0">Judul Kelas</h6>
