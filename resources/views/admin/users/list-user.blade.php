@@ -16,7 +16,7 @@
         <a href="users/create" class="btn btn-primary" role="button"><i class="bi bi-plus-lg"></i> Create new entry</a>
     </div>
     {{-- <div class="mt-4 mb-2"><button class="btn btn-primary btn-sm"><i class="bi bi-download"></i> Export</button></div> --}}
-    <div class="p-2 mt-4 bg-white">
+    <div class="p-2 mt-4 bg-white rounded shadow-sm">
         <table class="table">
             <thead>
               <tr>

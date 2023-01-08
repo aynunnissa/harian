@@ -5,7 +5,7 @@
   <h3 class="fw-bold mb-0 mt-4">{{ Str::title($user->name) }}</h3>
   <p class="fs-6 text-secondary">User ID: {{ $user->id }}</p>
   <div class="row m-0">
-    <div class="col-9 p-4 bg-white rounded">
+    <div class="col-9 p-4 bg-white shadow-sm rounded">
       <h4>Riwayat Kelas</h4>
       <table class="table">
           <thead>
@@ -35,14 +35,14 @@
       </table>  
     </div>
     <div class="col-3">
-      <div class="rounded px-2 py-4" style="background-color: #015b9a; width: 100%;">
+      <div class="rounded px-2 py-4 shadow-sm" style="background-color: #015b9a; width: 100%;">
         <div class="d-flex justify-content-center">
           <p class="mb-0 text-white py-2 px-4 bg-white rounded" style="--bs-bg-opacity: .2;"><i class="bi bi-currency-exchange"></i> Reward</p>
         </div>
         <h2 class="my-4 text-white fw-bold text-center">{{ $user->points}} points</h2>
         <p class="text-white text-center fw-lighter" style="font-size: 10px">total poin dari mengikuti kelas</p>
       </div>
-      <div class="p-2 bg-white rounded mt-3">
+      <div class="p-2 bg-white rounded shadow-sm mt-3">
         <p class="fw-semibold mb-0">Alamat email</p>
         <p>{{ $user->email }}</p>
         <p class="fw-semibold mb-0">Jumlah kelas diikuti</p>

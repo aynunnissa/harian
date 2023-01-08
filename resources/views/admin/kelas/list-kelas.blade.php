@@ -14,7 +14,7 @@
   </div>
   <a href="kelas/create" class="btn btn-primary" role="button"><i class="bi bi-plus-lg"></i> Create new entry</a>
 </div>
-<div class="mt-4 p-2 bg-white">
+<div class="mt-4 p-2 bg-white rounded shadow-sm">
     <table class="table">
         <thead>
           <tr>
