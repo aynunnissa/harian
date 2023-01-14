@@ -25,7 +25,7 @@
           <div style="position: relative; display: inline-block">
             <input class="bg-success" style="display: inline-block; cursor: pointer; position:absolute; bottom: 5px; right: 5px; width: 50px; height: 75px; z-index: 5; opacity: 0" type="file" name="image" id="image" required>
             <button class="btn btn-primary" style="cursor: pointer; position: absolute; bottom: 5px; right: 5px; width: 50px; height: 50px"><i class="bi bi-pencil-fill"></i></button>
-            <img id="preview-image-before-upload" src="{{asset('/storage/banners/banner.jpg')}}" alt="preview image" style="max-height: 250px;">
+            <img id="preview-image-before-upload" src="{{asset('/storage/banners/banner.png')}}" alt="preview image" style="max-height: 250px;">
           </div>
         </div>
         <div class="col-md-12">
